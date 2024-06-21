@@ -143,7 +143,7 @@ public class Mascota{
             //Establecer la conexion
             Connection cnx = Conexion.getConexion();
             //Preparar la instruccion SQL
-            PreparedStatement ps = cnx.prepareStatement("SELECT dueno.id, mascota.nombre, mascota.raza, mascota.color, mascota.alergico, mascota.atencion, dueno.nombre, dueno.telefono FROM mascota JOIN dueno ON mascota.dueno_id = dueno.id;");
+            PreparedStatement ps = cnx.prepareStatement("SELECT dueno.id, mascota.nombre, mascota.raza, mascota.color, mascota.alergico, mascota.atencion, dueno.nombre, dueno.telefono, mascota.observaciones FROM mascota JOIN dueno ON mascota.dueno_id = dueno.id;");
             //Pasar los valores de los parametros SQL
             
             //Ejecutar la instrcuccion SQL
@@ -160,6 +160,7 @@ public class Mascota{
                 mascota.setColor(rs.getString("mascota.color"));
                 mascota.setAlergico(rs.getString("mascota.alergico"));
                 mascota.setAtencion(rs.getString("mascota.atencion"));
+                mascota.setObservaciones(rs.getString("mascota.observaciones"));
                 
                 dueno.setIdDueno(rs.getInt("dueno.id"));
                 dueno.setNombre(rs.getString("dueno.nombre"));
